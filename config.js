@@ -4,7 +4,7 @@ window.HUB_CONFIG = {
   tagline: "Canales oficiales",
   links: [
     { id: "web", label: "Entrar a AURAWIN", desc: "La plataforma oficial", href: "https://aurawin.club", icon: "web", primary: true, utm: true },
-    { id: "telegram", label: "Telegram", desc: "Comunidad y anuncios", href: "https://t.me/aurawin", icon: "telegram" },
+    { id: "telegram", label: "Telegram", desc: "Comunidad y anuncios", href: "https://t.me/+IApgh7grRcJlOTJh", icon: "telegram" },
     { id: "whatsapp", label: "WhatsApp", desc: "Soporte y avisos", href: "https://wa.me/message/AURAWIN", icon: "whatsapp" },
     { id: "instagram", label: "Instagram", desc: "Novedades y contenido", href: "https://instagram.com/aurawin", icon: "instagram" },
     { id: "tiktok", label: "TikTok", desc: "Videos y sorteos", href: "https://www.tiktok.com/@aurawinclub", icon: "tiktok" },
