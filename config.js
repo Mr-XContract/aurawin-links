@@ -7,8 +7,10 @@ window.HUB_CONFIG = {
     { id: "telegram", label: "Telegram", desc: "Comunidad y anuncios", href: "https://t.me/aurawin", icon: "telegram" },
     { id: "whatsapp", label: "WhatsApp", desc: "Soporte y avisos", href: "https://wa.me/message/AURAWIN", icon: "whatsapp" },
     { id: "instagram", label: "Instagram", desc: "Novedades y contenido", href: "https://instagram.com/aurawin", icon: "instagram" },
-    { id: "x", label: "X / Twitter", desc: "Noticias en tiempo real", href: "https://x.com/aurawin", icon: "x" },
-    { id: "email", label: "Correo", desc: "soporte@aurawin.com", href: "mailto:soporte@aurawin.com", icon: "mail" }
+    // PENDIENTE: pega aquí el enlace del perfil de TikTok (oculto mientras esté vacío).
+    { id: "tiktok", label: "TikTok", desc: "Videos y sorteos", href: "", icon: "tiktok" },
+    { id: "email-soporte", label: "Soporte", desc: "soporte@aurawin.club", href: "mailto:soporte@aurawin.club", icon: "mail" },
+    { id: "email-franquicia", label: "Franquicias", desc: "franquicia@aurawin.club", href: "mailto:franquicia@aurawin.club", icon: "mail" }
   ],
   // Conteo de clics: crea una cuenta gratis en goatcounter.com, elige un código
   // (ej. "aurawin") y pégalo aquí. Verás los clics por botón en
