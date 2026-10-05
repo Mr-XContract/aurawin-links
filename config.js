@@ -7,8 +7,7 @@ window.HUB_CONFIG = {
     { id: "telegram", label: "Telegram", desc: "Comunidad y anuncios", href: "https://t.me/aurawin", icon: "telegram" },
     { id: "whatsapp", label: "WhatsApp", desc: "Soporte y avisos", href: "https://wa.me/message/AURAWIN", icon: "whatsapp" },
     { id: "instagram", label: "Instagram", desc: "Novedades y contenido", href: "https://instagram.com/aurawin", icon: "instagram" },
-    // PENDIENTE: pega aquí el enlace del perfil de TikTok (oculto mientras esté vacío).
-    { id: "tiktok", label: "TikTok", desc: "Videos y sorteos", href: "", icon: "tiktok" },
+    { id: "tiktok", label: "TikTok", desc: "Videos y sorteos", href: "https://www.tiktok.com/@aurawinclub", icon: "tiktok" },
     { id: "email-soporte", label: "Soporte", desc: "soporte@aurawin.club", href: "mailto:soporte@aurawin.club", icon: "mail" },
     { id: "email-franquicia", label: "Franquicias", desc: "franquicia@aurawin.club", href: "mailto:franquicia@aurawin.club", icon: "mail" }
   ],
