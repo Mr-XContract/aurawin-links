@@ -22,6 +22,8 @@
   a.btn.primary:hover{transform:scale(1.02)}
   svg{width:24px;height:24px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
   .t{flex:1}.t b{display:block;font-weight:600}.t small{display:block;font-size:12px;opacity:.6;margin-top:2px}
+  #dbg{margin-top:24px;padding:12px 14px;border-radius:12px;border:1px dashed rgba(255,255,255,.25);font-size:12px;color:rgba(255,255,255,.7)}
+  #dbg b{color:var(--g2)}#dbg div{display:flex;justify-content:space-between;padding:2px 0}
   footer{margin-top:40px;text-align:center;font-size:11px;line-height:1.6;color:rgba(255,255,255,.4)}
 </style>
 </head>
@@ -31,6 +33,7 @@
   <h1 id="name"></h1>
   <p class="tag" id="tag"></p>
   <nav id="links"></nav>
+  <div id="dbg" hidden></div>
   <footer id="disc"></footer>
 </main>
 <script src="config.js"></script>
@@ -47,15 +50,67 @@
   document.getElementById('tag').textContent=c.tagline;
   document.getElementById('disc').textContent=c.disclaimer;
   var nav=document.getElementById('links');
+  var cfgA=(c.analytics||{}).goatcounter;
+
+  // Conteo externo (GoatCounter). Solo se carga si hay código configurado.
+  if(cfgA){
+    window.goatcounter={no_onload:true,endpoint:'https://'+cfgA+'.goatcounter.com/count'};
+    var s=document.createElement('script');s.async=true;s.src='https://gc.zgo.at/count.js';
+    s.onload=function(){window.goatcounter.count({path:'hub',title:'Vista del hub'})};
+    document.head.appendChild(s);
+  }
+
+  // Contador local (modo debug) para comprobar que cada botón cuenta.
+  function localTally(id){
+    try{
+      var t=JSON.parse(localStorage.getItem('hub_clicks')||'{}');
+      t[id]=(t[id]||0)+1;localStorage.setItem('hub_clicks',JSON.stringify(t));
+    }catch(e){}
+    renderDebug();
+  }
+  function renderDebug(){
+    if(!c.debug)return;
+    var box=document.getElementById('dbg'),t={};
+    try{t=JSON.parse(localStorage.getItem('hub_clicks')||'{}')}catch(e){}
+    box.hidden=false;box.innerHTML='<b>Clics en este navegador (prueba)</b>';
+    c.links.forEach(function(l){
+      if(!l.href)return;
+      var r=document.createElement('div');
+      r.innerHTML='<span></span><b></b>';
+      r.firstChild.textContent=l.label;r.lastChild.textContent=t[l.id]||0;
+      box.appendChild(r);
+    });
+  }
+
+  function track(l){
+    if(window.goatcounter&&window.goatcounter.count){
+      window.goatcounter.count({path:'click/'+l.id,title:l.label,event:true});
+    }
+    localTally(l.id);
+  }
+
+  function withUtm(href,id){
+    try{
+      var u=new URL(href);var m=c.utm||{};
+      u.searchParams.set('utm_source',m.source||'hub');
+      u.searchParams.set('utm_medium',m.medium||'linkinbio');
+      u.searchParams.set('utm_campaign',id);
+      return u.toString();
+    }catch(e){return href}
+  }
+
   c.links.filter(function(l){return l.href}).forEach(function(l){
     var a=document.createElement('a');
     a.className='btn'+(l.primary?' primary':'');
-    a.href=l.href;a.target='_blank';a.rel='noopener noreferrer';
+    a.href=l.utm?withUtm(l.href,l.id):l.href;
+    a.target='_blank';a.rel='noopener noreferrer';
     a.innerHTML='<svg viewBox="0 0 24 24">'+(ICONS[l.icon]||ICONS.web)+'</svg><span class="t"><b></b><small></small></span>';
     a.querySelector('b').textContent=l.label;
     a.querySelector('small').textContent=l.desc;
+    a.addEventListener('click',function(){track(l)});
     nav.appendChild(a);
   });
+  renderDebug();
 </script>
 </body>
 </html>
