@@ -55,6 +55,18 @@
   var nav=document.getElementById('links');
   var cfgA=(c.analytics||{}).goatcounter;
   var cfgU=(c.analytics||{}).umami;
+  var own=(c.analytics||{}).own;
+
+  // Contador propio: avisa a /api/hit (que reenvía a Telegram). Falla en silencio.
+  function ping(type,id){
+    if(!own)return;
+    try{
+      var b=JSON.stringify({type:type,id:id});
+      if(navigator.sendBeacon){navigator.sendBeacon('/api/hit',new Blob([b],{type:'application/json'}))}
+      else{fetch('/api/hit',{method:'POST',headers:{'Content-Type':'application/json'},body:b,keepalive:true})}
+    }catch(e){}
+  }
+  try{if(!sessionStorage.getItem('hub_seen')){sessionStorage.setItem('hub_seen','1');ping('view','hub')}}catch(e){ping('view','hub')}
 
   // Conteo externo (GoatCounter). Solo se carga si hay código configurado.
   if(cfgA){
@@ -98,6 +110,7 @@
       window.goatcounter.count({path:'click/'+l.id,title:l.label,event:true});
     }
     try{if(window.umami&&window.umami.track){window.umami.track('click-'+l.id,{label:l.label})}}catch(e){}
+    ping('click',l.id);
     localTally(l.id);
   }
 
