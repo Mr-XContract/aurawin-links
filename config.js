@@ -12,10 +12,11 @@ window.HUB_CONFIG = {
     { id: "email-soporte", label: "Soporte", desc: "soporte@aurawin.club", href: "mailto:soporte@aurawin.club", icon: "mail" },
     { id: "email-franquicia", label: "Franquicias", desc: "franquicia@aurawin.club", href: "mailto:franquicia@aurawin.club", icon: "mail" }
   ],
-  // Conteo de clics: crea una cuenta gratis en goatcounter.com, elige un código
-  // (ej. "aurawin") y pégalo aquí. Verás los clics por botón en
-  // https://TU-CODIGO.goatcounter.com. Vacío = no se envía nada.
-  analytics: { goatcounter: "" },
+  // Conteo de clics (puedes usar uno solo; vacío = no se envía nada).
+  // umami: crea una cuenta gratis en cloud.umami.is, agrega un sitio y pega aquí
+  //   su "Website ID" (un UUID). Verás visitas y clics por botón en tu panel privado.
+  // goatcounter: alternativa; pega el código de tu cuenta de goatcounter.com.
+  analytics: { umami: "", goatcounter: "" },
   // Parámetros UTM que se agregan SOLO a los enlaces de tu propia web (utm: true),
   // para que tu plataforma sepa de qué botón llegó cada visita.
   utm: { source: "hub", medium: "linkinbio" },

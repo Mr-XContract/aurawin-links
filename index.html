@@ -54,6 +54,7 @@
   document.getElementById('disc').textContent=c.disclaimer;
   var nav=document.getElementById('links');
   var cfgA=(c.analytics||{}).goatcounter;
+  var cfgU=(c.analytics||{}).umami;
 
   // Conteo externo (GoatCounter). Solo se carga si hay código configurado.
   if(cfgA){
@@ -61,6 +62,13 @@
     var s=document.createElement('script');s.async=true;s.src='https://gc.zgo.at/count.js';
     s.onload=function(){window.goatcounter.count({path:'hub',title:'Vista del hub'})};
     document.head.appendChild(s);
+  }
+
+  // Conteo externo (Umami Cloud). Cuenta la vista del hub y, abajo, cada clic.
+  if(cfgU){
+    var u=document.createElement('script');u.defer=true;
+    u.src='https://cloud.umami.is/script.js';u.setAttribute('data-website-id',cfgU);
+    document.head.appendChild(u);
   }
 
   // Contador local (modo debug) para comprobar que cada botón cuenta.
@@ -89,6 +97,7 @@
     if(window.goatcounter&&window.goatcounter.count){
       window.goatcounter.count({path:'click/'+l.id,title:l.label,event:true});
     }
+    try{if(window.umami&&window.umami.track){window.umami.track('click-'+l.id,{label:l.label})}}catch(e){}
     localTally(l.id);
   }
 
