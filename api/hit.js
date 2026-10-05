@@ -12,7 +12,6 @@ const LABELS = {
   'whatsapp-canal': 'Canal de WhatsApp',
   instagram: 'Instagram',
   tiktok: 'TikTok',
-  'whatsapp-soporte': 'Soporte por WhatsApp',
   'email-soporte': 'Correo soporte',
   'email-franquicia': 'Correo franquicias',
 };
