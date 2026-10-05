@@ -3,8 +3,7 @@ window.HUB_CONFIG = {
   name: "AURAWIN",
   tagline: "Canales oficiales",
   links: [
-    // PENDIENTE: pon aquí el dominio real de la web (se oculta mientras esté vacío).
-    { id: "web", label: "Entrar a AURAWIN", desc: "La plataforma oficial", href: "", icon: "web", primary: true, utm: true },
+    { id: "web", label: "Entrar a AURAWIN", desc: "La plataforma oficial", href: "https://aurawin.club", icon: "web", primary: true, utm: true },
     { id: "telegram", label: "Telegram", desc: "Comunidad y anuncios", href: "https://t.me/aurawin", icon: "telegram" },
     { id: "whatsapp", label: "WhatsApp", desc: "Soporte y avisos", href: "https://wa.me/message/AURAWIN", icon: "whatsapp" },
     { id: "instagram", label: "Instagram", desc: "Novedades y contenido", href: "https://instagram.com/aurawin", icon: "instagram" },
