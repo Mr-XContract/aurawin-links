@@ -3,10 +3,13 @@ window.HUB_CONFIG = {
   name: "AURAWIN",
   tagline: "Canales oficiales",
   links: [
-    { id: "web", label: "Entrar a AURAWIN", desc: "La plataforma oficial", href: "https://TU-DOMINIO.com", icon: "web", primary: true, utm: true },
-    { id: "telegram", label: "Grupo de Telegram", desc: "Comunidad y anuncios", href: "", icon: "telegram" },
-    { id: "whatsapp", label: "Grupo de WhatsApp", desc: "Soporte y avisos", href: "", icon: "whatsapp" },
-    { id: "instagram", label: "Instagram", desc: "Novedades", href: "", icon: "instagram" }
+    // PENDIENTE: pon aquí el dominio real de la web (se oculta mientras esté vacío).
+    { id: "web", label: "Entrar a AURAWIN", desc: "La plataforma oficial", href: "", icon: "web", primary: true, utm: true },
+    { id: "telegram", label: "Telegram", desc: "Comunidad y anuncios", href: "https://t.me/aurawin", icon: "telegram" },
+    { id: "whatsapp", label: "WhatsApp", desc: "Soporte y avisos", href: "https://wa.me/message/AURAWIN", icon: "whatsapp" },
+    { id: "instagram", label: "Instagram", desc: "Novedades y contenido", href: "https://instagram.com/aurawin", icon: "instagram" },
+    { id: "x", label: "X / Twitter", desc: "Noticias en tiempo real", href: "https://x.com/aurawin", icon: "x" },
+    { id: "email", label: "Correo", desc: "soporte@aurawin.com", href: "mailto:soporte@aurawin.com", icon: "mail" }
   ],
   // Conteo de clics: crea una cuenta gratis en goatcounter.com, elige un código
   // (ej. "aurawin") y pégalo aquí. Verás los clics por botón en
